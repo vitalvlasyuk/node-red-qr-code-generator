@@ -1,0 +1,114 @@
+<script type="text/javascript">
+    RED.nodes.registerType('qr-code-generator', {
+        category: 'function',
+        color: '#a6bbcf',
+        defaults: {
+            name: { value: 'QR Code Generator' },
+            width: { value: 300 },
+            height: { value: 300 },
+            type: { value: 'canvas' },
+            margin: { value: 0 },
+            qrOptions: { value: {} },
+            imageOptions: { value: {} },
+            dotsOptions: { value: {} },
+            cornersSquareOptions: { value: {} },
+            cornersDotOptions: { value: {} },
+            backgroundOptions: { value: {} }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "qr-code-generator.png",
+        label: function () {
+            return this.name || 'QR Code Generator';
+        },
+        oneditprepare: function () {
+            var node = this;
+            var form = $(RED.editor.getNodeForm(node));
+
+            // Добавляем поля для редактирования параметров
+            form.append('<div class="form-row">' +
+                '<label for="node-input-width">Width</label>' +
+                '<input type="number" id="node-input-width" name="width">' +
+                '</div>' +
+                '<div class="form-row">' +
+                '<label for="node-input-height">Height</label>' +
+                '<input type="number" id="node-input-height" name="height">' +
+                '</div>' +
+                '<div class="form-row">' +
+                '<label for="node-input-type">Type</label>' +
+                '<select id="node-input-type" name="type">' +
+                '<option value="canvas">Canvas</option>' +
+                '<option value="svg">SVG</option>' +
+                '</select>' +
+                '</div>' +
+                '<div class="form-row">' +
+                '<label for="node-input-margin">Margin</label>' +
+                '<input type="number" id="node-input-margin" name="margin">' +
+                '</div>' +
+                '<div class="form-row">' +
+                '<label for="node-input-qrOptions">QR Options</label>' +
+                '<input type="text" id="node-input-qrOptions" name="qrOptions">' +
+                '</div>' +
+                '<div class="form-row">' +
+                '<label for="node-input-imageOptions">Image Options</label>' +
+                '<input type="text" id="node-input-imageOptions" name="imageOptions">' +
+                '</div>' +
+                '<div class="form-row">' +
+                '<label for="node-input-dotsOptions">Dots Options</label>' +
+                '<input type="text" id="node-input-dotsOptions" name="dotsOptions">' +
+                '</div>' +
+                '<div class="form-row">' +
+                '<label for="node-input-cornersSquareOptions">Corners Square Options</label>' +
+                '<input type="text" id="node-input-cornersSquareOptions" name="cornersSquareOptions">' +
+                '</div>' +
+                '<div class="form-row">' +
+                '<label for="node-input-cornersDotOptions">Corners Dot Options</label>' +
+                '<input type="text" id="node-input-cornersDotOptions" name="cornersDotOptions">' +
+                '</div>' +
+                '<div class="form-row">' +
+                '<label for="node-input-backgroundOptions">Background Options</label>' +
+                '<input type="text" id="node-input-backgroundOptions" name="backgroundOptions">' +
+                '</div>');
+
+            // Заполняем поля значениями из конфигурации узла
+            $('#node-input-width').val(node.width);
+            $('#node-input-height').val(node.height);
+            $('#node-input-type').val(node.type);
+            $('#node-input-margin').val(node.margin);
+            $('#node-input-qrOptions').val(JSON.stringify(node.qrOptions));
+            $('#node-input-imageOptions').val(JSON.stringify(node.imageOptions));
+            $('#node-input-dotsOptions').val(JSON.stringify(node.dotsOptions));
+            $('#node-input-cornersSquareOptions').val(JSON.stringify(node.cornersSquareOptions));
+            $('#node-input-cornersDotOptions').val(JSON.stringify(node.cornersDotOptions));
+            $('#node-input-backgroundOptions').val(JSON.stringify(node.backgroundOptions));
+
+            // Обрабатываем событие изменения значения поля
+            $('input,select', form).change(function () {
+                RED.nodes.dirty(node.id);
+            });
+        },
+
+        oneditsave: function () {
+            // Сохраняем значения полей в конфигурацию узла
+            var node = this;
+
+            function safeParse(jsonString, defaultValue) {
+                try {
+                    return JSON.parse(jsonString);
+                } catch (e) {
+                    return defaultValue;
+                }
+            }
+            node.width = parseInt($('#node-input-width').val()) || 300;
+            node.height = parseInt($('#node-input-height').val()) || 300;
+            node.type = $('#node-input-type').val();
+            node.margin = parseInt($('#node-input-margin').val()) || 0;
+            node.qrOptions = safeParse($('#node-input-qrOptions').val(), null);
+            node.imageOptions = safeParse($('#node-input-imageOptions').val(), null);
+            node.dotsOptions = safeParse($('#node-input-dotsOptions').val(), null);
+            node.cornersSquareOptions = safeParse($('#node-input-cornersSquareOptions').val(), null);
+            node.cornersDotOptions = safeParse($('#node-input-cornersDotOptions').val(), null);
+            node.backgroundOptions = safeParse($('#node-input-backgroundOptions').val(), null);
+        }
+    });
+</script>

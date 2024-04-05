@@ -1,0 +1,60 @@
+[
+    {
+        "id": "1",
+        "type": "qr-code-generator",
+        "z": "2",
+        "name": "QR Code Generator",
+        "width": 300,
+        "height": 300,
+        "type": "canvas",
+        "margin": 0,
+        "qrOptions": {
+            "mode": "Byte",
+            "ecLevel": "L",
+            "scale": 4
+        },
+        "imageOptions": {
+            "hideBackgroundDots": false,
+            "imageSize": 0.3,
+            "margin": 0
+        },
+        "dotsOptions": {
+            "type": "rounded",
+            "color": "#000000"
+        },
+        "cornersSquareOptions": {
+            "type": "square",
+            "color": "#000000"
+        },
+        "cornersDotOptions": {
+            "type": "dot",
+            "color": "#000000"
+        },
+        "backgroundOptions": {
+            "color": "#ffffff"
+        },
+        "x": 100,
+        "y": 100,
+        "wires": [
+            [
+                "2"
+            ]
+        ]
+    },
+    {
+        "id": "2",
+        "type": "debug",
+        "z": "2",
+        "name": "debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 300,
+        "y": 100,
+        "wires": []
+    }
+]

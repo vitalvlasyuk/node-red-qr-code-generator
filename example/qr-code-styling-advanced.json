@@ -1,0 +1,133 @@
+[
+    {
+        "id": "1",
+        "type": "qr-code-generator",
+        "z": "2",
+        "name": "QR Code Generator",
+        "width": 300,
+        "height": 300,
+        "type": "canvas",
+        "margin": 0,
+        "qrOptions": {
+            "mode": "Byte",
+            "ecLevel": "L",
+            "scale": 4,
+            "color": {
+                "dark": "#000000",
+                "light": "#ffffff"
+            },
+            "gradient": {
+                "type": "linear",
+                "rotation": 45,
+                "colorStops": [
+                    {
+                        "offset": 0,
+                        "color": "#000000"
+                    },
+                    {
+                        "offset": 1,
+                        "color": "#ffffff"
+                    }
+                ]
+            }
+        },
+        "imageOptions": {
+            "hideBackgroundDots": true,
+            "imageSize": 0.3,
+            "margin": 0,
+            "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="
+        },
+        "dotsOptions": {
+            "type": "rounded",
+            "color": "#000000",
+            "gradient": {
+                "type": "radial",
+                "colorStops": [
+                    {
+                        "offset": 0,
+                        "color": "#000000"
+                    },
+                    {
+                        "offset": 1,
+                        "color": "#ffffff"
+                    }
+                ]
+            }
+        },
+        "cornersSquareOptions": {
+            "type": "square",
+            "color": "#000000",
+            "gradient": {
+                "type": "linear",
+                "rotation": 45,
+                "colorStops": [
+                    {
+                        "offset": 0,
+                        "color": "#000000"
+                    },
+                    {
+                        "offset": 1,
+                        "color": "#ffffff"
+                    }
+                ]
+            }
+        },
+        "cornersDotOptions": {
+            "type": "dot",
+            "color": "#000000",
+            "gradient": {
+                "type": "radial",
+                "colorStops": [
+                    {
+                        "offset": 0,
+                        "color": "#000000"
+                    },
+                    {
+                        "offset": 1,
+                        "color": "#ffffff"
+                    }
+                ]
+            }
+        },
+        "backgroundOptions": {
+            "color": "#ffffff",
+            "gradient": {
+                "type": "linear",
+                "rotation": 45,
+                "colorStops": [
+                    {
+                        "offset": 0,
+                        "color": "#ffffff"
+                    },
+                    {
+                        "offset": 1,
+                        "color": "#000000"
+                    }
+                ]
+            }
+        },
+        "x": 100,
+        "y": 100,
+        "wires": [
+            [
+                "2"
+            ]
+        ]
+    },
+    {
+        "id": "2",
+        "type": "debug",
+        "z": "2",
+        "name": "debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 300,
+        "y": 100,
+        "wires": []
+    }
+]
